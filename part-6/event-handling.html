@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learning Vue Js</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">	
+		<div id="app">
+			<h1>{{ message }}</h1>
+			<!-- <h4>Count: {{ count }}</h4> -->
+			<!-- <button @click="countUp" class="btn btn-primary">Count Up</button>
+			<button @click="countDown" class="btn btn-primary">Count Down</button> -->
+			
+			<p>Visit: <a :href="url" target="_blank">{{ cleanUrl }}</a> </p>
+			<input type="text" v-model="url">
+			<button @click="humanUrl" class="btn btn-primary">Humanize Me</button>
+			
+		</div>
+	</div>
+</body>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://unpkg.com/vue@2.3.3"></script>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {	
+		message: "Hello There!",
+		count: 0,
+		url: "",
+		cleanUrl: "",		
+		}, 
+
+		methods: {
+			countUp: function () {
+			 	this.count += 1
+			},
+			countDown: function () {
+			 	this.count -= 1
+			},
+
+			humanUrl: function() {
+				this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
+			}
+		}
+	})
+</script>
+</html>
