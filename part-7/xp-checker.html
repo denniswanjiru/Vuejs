@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed properties</title>
+	<link rel="stylesheet" href="../bootstrap.min.css">
+</head>
+<body>
+	<div id="app" class="container" style="margin-top: 70px;">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="row text-center">
+				<h2>Your are {{level}}</h2>
+				<hr>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<h4>Your XP: {{xp}} </h4>
+				</div>
+				<div class="col-md-6">
+					<button class="btn btn-success btn-block" @click="addXP">Increase XP</button>
+				</div>
+				<div class="col-md-6">
+					<button class="btn btn-success btn-block" @click="decreaseXP">Decrease XP</button>
+				</div>
+			</div>
+		</div>		
+	</div>	
+</body>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://unpkg.com/vue@2.3.3"></script>
+<script>
+	var app = new Vue({
+			el: '#app',
+			data: {
+				xp: 10
+			},
+
+			methods: {
+				addXP: function () {
+					this.xp += 10
+				},
+
+				decreaseXP: function () {
+					this.xp -= 10
+				}
+			},
+
+			computed: {
+				level: function() {
+					if (this.xp >= 200) {
+						return "a Pro"
+					} else if (this.xp >= 100) {
+						return "an Intermediate"
+					}else if (this.xp >= 0) {
+						return "a Begginer"
+					}else {
+						return "Banned"
+					}
+				}
+			}
+		})
+</script>
+</html>
